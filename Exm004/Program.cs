@@ -7,13 +7,15 @@ int val = new Random().Next(10, 99);
 int diw = val / 10;
 int mod = val % 10;
 
-Console.WriteLine(val);
+Console.WriteLine($"Рандомное число {val}");
+Console.WriteLine($"val / 10 = {diw}");
+Console.WriteLine($"val % 10 = {mod}");
 
-if (diw>diw) 
+if (diw > mod)
 {
-    Console.WriteLine(diw);
+    Console.WriteLine($"Наибольшее число {diw}");
 }
-else 
+else
 {
-    Console.WriteLine(diw);
+    Console.WriteLine($"Наибольшее число {mod}");
 }
