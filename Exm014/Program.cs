@@ -1,55 +1,56 @@
 ﻿// // Вывод на экран цифр введенных с клавиатуры
-void PrintImage(int[,] image)
+
+void PrintNumber(int[,] numbers, int userNumber)
 {
-    for (int i = 0; i < image.GetLength(0); i++)
+    int columnsInNumber = 6;
+    int allNumbersInArray = 10;
+    int startArray = numbers.GetLength(1) - 1 - (columnsInNumber * (allNumbersInArray - userNumber));
+    int endArray = startArray + columnsInNumber;
+    if (userNumber != 0)
     {
-        for (int j = 0; j < image.GetLength(1); j++)
+        for (int i = 0; i < numbers.GetLength(0); i++)
         {
-            if (image[i, j] == 0) Console.Write(" ");
-            else Console.Write("#");
+            for (int j = startArray; j < endArray; j++)
+            {
+                if (numbers[i, j] == 0) Console.Write(" ");
+                else Console.Write("#");
+            }
+            Console.WriteLine();
         }
-        Console.WriteLine();
+    }
+    else
+    {
+        for (int i = 0; i < numbers.GetLength(0); i++)
+        {
+            for (int j = startArray + 1; j < endArray; j++)
+            {
+                if (numbers[i, j] == 0) Console.Write(" ");
+                else Console.Write("#");
+            }
+            Console.WriteLine();
+        }
     }
 }
-
 int[,] numbers =
 {
-    {0, 0, 0, 1, 1, 0,  0, 0, 0, 0, 1, 0,  0, 0, 1, 1, 0, 0,  0, 0, 1, 1, 0, 0,  0, 0, 0, 0, 1, 0,  0, 1, 1, 1, 1, 0,   0, 0, 1, 1, 0, 0,   0, 1, 1, 1, 1, 0,   0, 0, 1, 1, 0, 0,   0, 0, 1, 1, 0, 0  },
-    {0, 0, 1, 0, 0, 1,  0, 0, 0, 1, 1, 0,  0, 1, 0, 0, 1, 0,  0, 1, 0, 0, 1, 0,  0, 0, 0, 1, 1, 0,  0, 1, 0, 0, 0, 0,   0, 1, 0, 0, 0, 0,   0, 0, 0, 1, 0, 0,   0, 1, 0, 0, 1, 0,   0, 1, 0, 0, 1, 0  },
-    {0, 0, 1, 0, 0, 1,  0, 0, 1, 0, 1, 0,  0, 0, 0, 1, 0, 0,  0, 0, 0, 1, 0, 0,  0, 0, 1, 0, 1, 0,  0, 1, 1, 1, 0, 0,   0, 1, 1, 1, 0, 0,   0, 0, 1, 0, 0, 0,   0, 0, 1, 1, 0, 0,   0, 0, 1, 1, 1, 0  },
-    {0, 0, 1, 0, 0, 1,  0, 0, 0, 0, 1, 0,  0, 0, 1, 0, 0, 0,  0, 1, 0, 0, 1, 0,  0, 1, 1, 1, 1, 0,  0, 0, 0, 0, 1, 0,   0, 1, 0, 0, 1, 0,   0, 1, 0, 0, 0, 0,   0, 1, 0, 0, 1, 0,   0, 0, 0, 0, 1, 0  },
-    {0, 0, 0, 1, 1, 0,  0, 0, 0, 0, 1, 0,  0, 1, 1, 1, 1, 0,  0, 0, 1, 1, 0, 0,  0, 0, 0, 0, 1, 0,  0, 1, 1, 1, 0, 0,   0, 1, 1, 1, 0, 0,   0, 1, 0, 0, 0, 0,   0, 0, 1, 1, 0, 0,   0, 0, 1, 1, 0, 0  },
+    {0, 0, 1, 1, 0, 0,  0, 0, 0, 0, 1, 0,  0, 0, 1, 1, 0, 0,  0, 0, 1, 1, 0, 0,  0, 0, 0, 0, 1, 0,  0, 1, 1, 1, 1, 0,   0, 0, 1, 1, 0, 0,   0, 1, 1, 1, 1, 0,   0, 0, 1, 1, 0, 0,   0, 0, 1, 1, 0, 0  },
+    {0, 1, 0, 0, 1, 0,  0, 0, 0, 1, 1, 0,  0, 1, 0, 0, 1, 0,  0, 1, 0, 0, 1, 0,  0, 0, 0, 1, 1, 0,  0, 1, 0, 0, 0, 0,   0, 1, 0, 0, 0, 0,   0, 0, 0, 1, 0, 0,   0, 1, 0, 0, 1, 0,   0, 1, 0, 0, 1, 0  },
+    {0, 1, 0, 0, 1, 0,  0, 0, 1, 0, 1, 0,  0, 0, 0, 1, 0, 0,  0, 0, 0, 1, 0, 0,  0, 0, 1, 0, 1, 0,  0, 1, 1, 1, 0, 0,   0, 1, 1, 1, 0, 0,   0, 0, 1, 0, 0, 0,   0, 0, 1, 1, 0, 0,   0, 0, 1, 1, 1, 0  },
+    {0, 1, 0, 0, 1, 0,  0, 0, 0, 0, 1, 0,  0, 0, 1, 0, 0, 0,  0, 1, 0, 0, 1, 0,  0, 1, 1, 1, 1, 0,  0, 0, 0, 0, 1, 0,   0, 1, 0, 0, 1, 0,   0, 1, 0, 0, 0, 0,   0, 1, 0, 0, 1, 0,   0, 0, 0, 0, 1, 0  },
+    {0, 0, 1, 1, 0, 0,  0, 0, 0, 0, 1, 0,  0, 1, 1, 1, 1, 0,  0, 0, 1, 1, 0, 0,  0, 0, 0, 0, 1, 0,  0, 1, 1, 1, 0, 0,   0, 1, 1, 1, 0, 0,   0, 1, 0, 0, 0, 0,   0, 0, 1, 1, 0, 0,   0, 0, 1, 1, 0, 0  },
 };
 
-PrintImage(numbers);
-Console.WriteLine($"строк: {numbers.GetLength(0)}");
-Console.WriteLine($"столбцов: {numbers.GetLength(1)}");
+// int userNumber = Convert.ToInt32(Console.ReadLine());
 
+int userNumber = 123;
 
-int userNumber = Convert.ToInt32(Console.ReadLine());
-
-if (userNumber == 2)
+while (userNumber > 0)
 {
-    for (int i = 0; i < numbers.GetLength(0); i++)
-    {
-        for (int j = numbers.GetLength(1) - 1 - (6*8); j < numbers.GetLength(1) - 1 - (6*7); j++)
-        {
-            if (numbers[i, j] == 0) Console.Write(" ");
-            else Console.Write("#");
-        }
-        Console.WriteLine();
-    }
+    int printNumber;
+    printNumber = userNumber % 10;
+    userNumber /= 10;
+    PrintNumber(numbers, printNumber);
 }
 
-if (userNumber == 3)
-{
-    for (int i = 0; i < numbers.GetLength(0); i++)
-    {
-        for (int j = 17; j < 23; j++)
-        {
-            if (numbers[i, j] == 0) Console.Write(" ");
-            else Console.Write("#");
-        }
-        Console.WriteLine();
-    }
-}
+
+
