@@ -4,13 +4,13 @@ void PrintNumber(int[,] numbers, int userNumber)
 {
     int columnsInNumber = 6;
     int allNumbersInArray = 10;
-    int startArray = numbers.GetLength(1) - 1 - (columnsInNumber * (allNumbersInArray - userNumber));
-    int endArray = startArray + columnsInNumber;
+    int startPrint = numbers.GetLength(1) - 1 - (columnsInNumber * (allNumbersInArray - userNumber));
+    int endPrint = startPrint + columnsInNumber;
     if (userNumber != 0)
     {
         for (int i = 0; i < numbers.GetLength(0); i++)
         {
-            for (int j = startArray; j < endArray; j++)
+            for (int j = startPrint; j < endPrint; j++)
             {
                 if (numbers[i, j] == 0) Console.Write(" ");
                 else Console.Write("#");
@@ -22,7 +22,7 @@ void PrintNumber(int[,] numbers, int userNumber)
     {
         for (int i = 0; i < numbers.GetLength(0); i++)
         {
-            for (int j = startArray + 1; j < endArray; j++)
+            for (int j = startPrint + 1; j < endPrint; j++)
             {
                 if (numbers[i, j] == 0) Console.Write(" ");
                 else Console.Write("#");
@@ -51,6 +51,3 @@ while (userNumber > 0)
     userNumber /= 10;
     PrintNumber(numbers, printNumber);
 }
-
-
-
